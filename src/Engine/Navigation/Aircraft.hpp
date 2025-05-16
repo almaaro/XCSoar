@@ -92,6 +92,11 @@ struct VarioState
    */
   double netto_vario;
 
+  /**
+   * Netto variometer with fast average filter, used for speed to fly
+   */
+  double netto_vario_average_stf;
+
   constexpr void Reset() noexcept {
     vario = netto_vario = 0;
   }

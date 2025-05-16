@@ -30,6 +30,7 @@ ToAircraftState(const MoreData &info, const DerivedInfo &calculated)
   /* VARIO_INFO */
   aircraft.vario = info.brutto_vario;
   aircraft.netto_vario = info.netto_vario;
+  aircraft.netto_vario_average_stf = calculated.netto_average_stf;
 
   /* AIRCRAFT_STATE */
   aircraft.time = info.time_available ? info.time : TimeStamp::Undefined();

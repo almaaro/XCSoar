@@ -17,6 +17,9 @@ struct VarioInfo
   /** Average vertical speed of the airmass based on 30s */
   double netto_average;
 
+  /** Average vertical speed of the airmass used for speed to fly calculations (faster) */
+  double netto_average_stf;
+
   /** Instant glide ratio over ground */
   double gr;
   /** Glide ratio over ground while in Cruise mode */

@@ -19,7 +19,7 @@ CalculationThread::CalculationThread(DeviceBlackboard &_device_blackboard,
                    screen cannot be updated that often */
                 std::chrono::milliseconds{900},
 #else
-                std::chrono::milliseconds{450},
+                std::chrono::milliseconds{200},
 #endif
                 std::chrono::milliseconds{100},
                 std::chrono::milliseconds{50}),

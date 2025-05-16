@@ -323,7 +323,7 @@ GlidePolar::SpeedToFly(const AircraftState &state,
     ? 1.
     : sqrt(fabs(state.g_load));
 
-  if (!block_stf && (state.netto_vario > mc + Smin)) {
+  if (!block_stf && (state.netto_vario_average_stf > mc + Smin)) {
     // stop to climb
     V_stf = Vmin;
   } else {
@@ -332,7 +332,7 @@ GlidePolar::SpeedToFly(const AircraftState &state,
       : 0.;
     const auto stf_sink_rate = block_stf
       ? 0.
-      : -state.netto_vario;
+      : -state.netto_vario_average_stf;
 
     V_stf = SpeedToFly(stf_sink_rate, head_wind);
   }

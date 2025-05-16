@@ -11,6 +11,7 @@ AverageVarioComputer::Reset()
   delta_time.Reset();
   vario_30s_filter.Reset();
   netto_30s_filter.Reset();
+  netto_stf_filter.Reset();
 }
 
 void
@@ -18,6 +19,14 @@ AverageVarioComputer::Compute(const MoreData &basic,
                               bool circling, bool last_circling,
                               VarioInfo &vario_info)
 {
+
+  /**
+   * Update the speed to fly average vario every time there is new data
+   */
+  netto_stf_filter.Update(basic.netto_vario);
+  vario_info.netto_average_stf = netto_stf_filter.Average();
+
+
   const auto dt = delta_time.Update(basic.time, std::chrono::seconds{1}, {});
   if (dt.count() < 0 || circling != last_circling) {
     Reset();
